@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+const products = [
+  { title: 'Cabbage', ico: '🥗', isFruit: false, id: 1 },
+  { title: 'Garlic', ico: '🧄', isFruit: false, id: 2 },
+  { title: 'Apple', ico: '🍎', isFruit: true, id: 3 },
+  { title: 'Pear', ico: '🍐', isFruit: true, id: 4 },
+];
 
-function App() {
+export default function ShoppingList() {
+  const listItems = products.map(product =>
+      <li
+          key={product.id}
+          style={{
+              color: product.isFruit ? 'magenta' : 'darkgreen'
+          }}
+      >
+          {product.ico} {product.title}
+      </li>
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <ul>{listItems}</ul>
   );
 }
-
-export default App;
